@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -14,53 +16,70 @@ import lombok.NoArgsConstructor;
 @Table(name = "despesas")
 public class Despesa {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private String id;
+    private Integer id;
+
 
     @Column(nullable = false , name = "nome")
     private String nome;
 
+
     @Column(nullable = false , name = "valor")
     private Double valor;
 
+
     @Column(nullable = false , name = "fonteLoja")
     private String fonteLoja;
+
 
     @Column(nullable = false , name = "formaPagamento")
     @Enumerated(EnumType.STRING)
     private FormaPagamento formaPagamento;
 
+
     @Column(nullable = false , name = "recorrente")
     private Boolean recorrente;
+
 
     @Column(nullable = true , name = "quantidadeParcelas")
     private Integer quantidadeParcelas;
 
+
     @Column(nullable = true , name = "valorParcela")
     private Double valorParcela;
+
 
     @Column(nullable = true , name = "parcelasPagas")
     private Integer parcelasPagas;
 
+
     @Column(nullable = true , name = "parcelasRestantes")
     private Integer parcelasRestantes;
+
 
     @Column(nullable = true , name = "parcelaAtual")
     private Integer parcelaAtual;
 
+
     @Column(nullable = false , name = "dataEntrada")
-    private String dataEntrada;
+    private LocalDate dataEntrada;
+
 
     @Column(nullable = false , name = "dataPagamento")
-    private String dataPagamento;
+    private LocalDate dataPagamento;
+
 
     @Column(nullable = false , name = "statusPagamento")
     @Enumerated(EnumType.STRING)
     private StatusPagamento statusPagamento;
 
+
     @Column(nullable = false , name = "categoria")
-    private String categoria;
+    @Enumerated(EnumType.STRING)
+    private Categoria categoria;
+
 
     @Column(nullable = false , name = "prioridade")
     @Enumerated(EnumType.STRING)
@@ -76,16 +95,50 @@ public class Despesa {
         PAGO, PENDENTE, ATRASADO
     }
 
+
     public enum Prioridade {
         ALTA, MEDIA, BAIXA
     }
+
 
     public enum FormaPagamento {
         DINHEIRO, CARTAO_CREDITO, CARTAO_DEBITO, PIX, BOLETO
     }
 
 
+    public enum Categoria {
+        SUPERMERCADO,
+        RESTAURANTE,
+        MORADIA,            // aluguel, contas fixas
+        TRANSPORTE,
+        SAUDE,
+        EDUCACAO,
+        LAZER,
+        VESTUARIO,
+        ASSINATURA,         // Netflix, Spotify, etc.
+        VIAGEM,
+        INVESTIMENTO,
+        DÍVIDA,
+        DOACAO,
+        PETS,
+        PRESENTES,
+        IMPOSTOS,
+        OUTROS
+    }
 
+
+    public enum CategoriaEntrada {
+        SALARIO,            // pagamento fixo do trabalho
+        FREELANCE,          // trabalhos extras
+        VENDA,              // venda de produto/bem
+        INVESTIMENTO,       // rendimentos de aplicações
+        ALUGUEL,            // imóvel alugado
+        BONUS,              // bônus salarial, comissão
+        PRESENTE,           // alguém te deu dinheiro/valor
+        REEMBOLSO,          // empresa devolveu um gasto seu
+        PREMIO,             // sorteio, loteria
+        OUTROS              // fallback
+    }
 
 
 }
