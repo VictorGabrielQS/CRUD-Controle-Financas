@@ -1,5 +1,6 @@
-package com.VictorDevCode.CRUD_Controle_Financas.entity;
+package com.VictorDevCode.CRUD_Controle_Financas.infrastructure.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -63,11 +64,13 @@ public class Despesa {
     private Integer parcelaAtual;
 
 
-    @Column(nullable = false , name = "dataEntrada")
+    @Column(nullable = true , name = "dataEntrada")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataEntrada;
 
 
     @Column(nullable = false , name = "dataPagamento")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataPagamento;
 
 

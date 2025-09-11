@@ -1,6 +1,7 @@
-package com.VictorDevCode.CRUD_Controle_Financas.entity;
+package com.VictorDevCode.CRUD_Controle_Financas.infrastructure.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +36,7 @@ public class Entrada {
 
 
     @Column(nullable = false , name = "dataRecebimento")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataRecebimento;
 
 
