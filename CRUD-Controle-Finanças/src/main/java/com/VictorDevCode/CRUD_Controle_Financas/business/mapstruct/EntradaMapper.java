@@ -14,7 +14,7 @@ public interface EntradaMapper {
 
     // Mapeia os campos do DTO para a entidade, ignorando o campo ID e definindo dataEntrada como a data atual se for nula
     @Mapping(target = "id" , ignore = true)
-    @Mapping(target = "dataEntrada" , expression = "java(dto.getDataEntrada() != null ? dto.getDataEntrada() : java.time.LocalDate.now())")
+    @Mapping(target = "dataRecebimento" , expression = "java(dto.getDataRecebimento() != null ? dto.getDataRecebimento() : java.time.LocalDate.now())")
     Entrada paraEntradaEntity(EntradaRequestDTO dto);
 
     // Mapeia todos os campos da entidade para o DTO

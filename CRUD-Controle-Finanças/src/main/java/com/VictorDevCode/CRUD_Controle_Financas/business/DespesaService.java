@@ -5,6 +5,7 @@ import com.VictorDevCode.CRUD_Controle_Financas.business.dto.DespesaResponseDTO;
 import com.VictorDevCode.CRUD_Controle_Financas.business.mapstruct.DespesaMapper;
 import com.VictorDevCode.CRUD_Controle_Financas.infrastructure.entity.Despesa;
 import com.VictorDevCode.CRUD_Controle_Financas.infrastructure.repositories.DespesaRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,7 @@ public class DespesaService {
     }
 
 
+    @Transactional
     public void deletarDespesaPorId(Integer id) {
         despesaRepository.deleteById(id);
     };

@@ -4,6 +4,7 @@ package com.VictorDevCode.CRUD_Controle_Financas.controller;
 import com.VictorDevCode.CRUD_Controle_Financas.business.DespesaService;
 import com.VictorDevCode.CRUD_Controle_Financas.business.dto.DespesaRequestDTO;
 import com.VictorDevCode.CRUD_Controle_Financas.business.dto.DespesaResponseDTO;
+import lombok.RequiredArgsConstructor;
 import org.mapstruct.control.MappingControl;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -14,14 +15,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/despesas")
+@RequiredArgsConstructor
 public class DespesaController {
 
     private final DespesaService despesaService;
-
-
-    public DespesaController(DespesaService despesaService) {
-        this.despesaService = despesaService;
-    }
 
 
     // - Criar Despesa
@@ -39,11 +36,13 @@ public class DespesaController {
 
 
     // - Despesa por id
-
     @DeleteMapping("/deletar/{id}")
     public void deletarDespesaPorId(@PathVariable Integer id) {
         despesaService.deletarDespesaPorId(id);
     }
+
+
+
 
     // - Retorna Despesa por Data Entrada
     @GetMapping("/data")
