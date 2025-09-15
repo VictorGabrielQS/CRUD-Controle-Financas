@@ -28,6 +28,7 @@ public class DespesaResponseDTO {
     private Double valorParcela;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataEntrada;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dataPagamento;
     private String statusPagamento;
     private String categoria;

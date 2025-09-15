@@ -31,8 +31,7 @@ public class Entrada {
 
 
     @Column(nullable = false , name = "origem")
-    @Enumerated(EnumType.STRING)
-    private Origem origem;
+    private String origem;
 
 
     @Column(nullable = false , name = "dataRecebimento")
@@ -59,10 +58,6 @@ public class Entrada {
     private Categoria categoria;
 
 
-
-    public enum  Origem {
-        TRABALHO, NEGOCIO_PROPRIO, INVESTIMENTOS, PRESENTE, OUTROS
-    }
 
 
     public enum MetodoRecebimento {

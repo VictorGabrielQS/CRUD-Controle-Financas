@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { FaMoneyBillWave, FaTag, FaCalendarAlt, FaCreditCard, FaSyncAlt } from "react-icons/fa";
 
 interface AddEntradaModalProps {
   onClose: () => void;
@@ -29,6 +28,7 @@ export default function AddEntradaModal({ onClose }: AddEntradaModalProps) {
     
     // Formata como moeda brasileira (R$ 0,00)
     return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
       currency: 'BRL',
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -93,7 +93,7 @@ export default function AddEntradaModal({ onClose }: AddEntradaModalProps) {
   };
 
   return (
-    <div className="p-8 rounded-3xl bg-gray-800 shadow-2xl border border-green-500 max-w-lg mx-auto">
+    <div className="p-4 sm:p-6 md:p-8 rounded-3xl bg-gray-800 shadow-2xl border border-green-500 w-11/12 md:max-w-lg mx-auto overflow-y-auto">
       <h2 className="text-2xl font-bold text-green-400 mb-6 text-center">Adicionar Nova Entrada</h2>
       <form onSubmit={handleSubmit}>
         <div className="space-y-4">

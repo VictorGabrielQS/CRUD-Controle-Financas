@@ -4,8 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c112d17b-0100-42fe-85c1-c3ea35395eb4" name="Changes" comment="Criação Tela de Dashboard Front CRUD Controle Finanças">
-      <change beforePath="$PROJECT_DIR$/CRUD-Controle-Finanças/data/testdb.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/data/testdb.mv.db" afterDir="false" />
+    <list default="true" id="c112d17b-0100-42fe-85c1-c3ea35395eb4" name="Changes" comment="Criação botao add front">
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/InvestimentoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/dto/InvestimentoRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/dto/InvestimentoResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/mapstruct/InvestimentoMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/controller/InvestimentoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/infrastructure/entity/Investimento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/infrastructure/repositories/InvestimentoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRUD-Controle-Finanças/data/testdb.mv.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRUD-Controle-Finanças/data/testdb.trace.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/CrudControleFinancasApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/CrudControleFinancasApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/dto/DespesaResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/dto/DespesaResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/dto/EntradaResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/dto/EntradaResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/infrastructure/entity/Entrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/infrastructure/entity/Entrada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-CRUD-Controle-Financas/src/components/AddEntradaModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front-CRUD-Controle-Financas/src/components/AddEntradaModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-CRUD-Controle-Financas/src/components/AddOptionsModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front-CRUD-Controle-Financas/src/components/AddOptionsModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-CRUD-Controle-Financas/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front-CRUD-Controle-Financas/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-CRUD-Controle-Financas/src/pages/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Front-CRUD-Controle-Financas/src/pages/Dashboard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

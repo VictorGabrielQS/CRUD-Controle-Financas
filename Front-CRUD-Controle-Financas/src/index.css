@@ -3,6 +3,23 @@
 @tailwind utilities;
 
 /* Opcional: Estilos globais muito básicos, como a fonte e o fundo */
+
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
 :root {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
@@ -28,6 +45,8 @@ body {
 }
 
 
+
+
 .popup-overlay {
   background: rgba(0, 0, 0, 0.8) !important;
 }
@@ -35,6 +54,8 @@ body {
 .popup-content {
   background: transparent !important;
   border: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
 }
-
 
