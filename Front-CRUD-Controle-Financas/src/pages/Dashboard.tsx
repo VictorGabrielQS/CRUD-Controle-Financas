@@ -7,6 +7,7 @@ import AddEntradaModal from "./../components/AddEntradaModal";
 import AddDespesaModal from "./../components/AddDespesaModal";
 import AddInvestimentoModal from "./../components/AddInvestimentoModal";
 import AddMetaModal from "./../components/AddMetaModal";
+import UpdateInvestimentoModal from "../components/UpdateInvestimentoModal";
 
 interface Entrada {
   id: number;
@@ -49,7 +50,6 @@ interface Investimento {
 
 type ModalType = "options" | "entrada" | "despesa" | "investimento" | "meta" | null;
 
-// Nova função para converter a data de DD/MM/YYYY para YYYY-MM-DD
 const formatDateForComparison = (dateStr: string) => {
     if (!dateStr) return '';
     const [day, month, year] = dateStr.split('/');
@@ -64,12 +64,10 @@ export default function Dashboard() {
   const [modalType, setModalType] = useState<ModalType>(null);
   const [podeSerGasto, setPodeSerGasto] = useState<number>(0);
   
-  // Estados para os modais de lista
   const [showAllEntradas, setShowAllEntradas] = useState<boolean>(false);
   const [showAllDespesas, setShowAllDespesas] = useState<boolean>(false);
   const [showAllInvestimentos, setShowAllInvestimentos] = useState<boolean>(false);
   
-  // Novos estados para paginação e filtro por data
   const [currentPageEntradas, setCurrentPageEntradas] = useState(1);
   const [filterDateEntradas, setFilterDateEntradas] = useState('');
 
@@ -78,6 +76,9 @@ export default function Dashboard() {
 
   const [currentPageInvestimentos, setCurrentPageInvestimentos] = useState(1);
   const [filterDateInvestimentos, setFilterDateInvestimentos] = useState('');
+
+  const [showUpdateInvestimentoModal, setShowUpdateInvestimentoModal] = useState(false);
+  const [investimentoToUpdate, setInvestimentoToUpdate] = useState<Investimento | null>(null);
   
   const ITEMS_PER_PAGE = 10;
 
@@ -266,19 +267,25 @@ export default function Dashboard() {
           >
             Excluir
           </button>
-          <button
-            className="px-6 py-2 rounded-lg bg-blue-600 text-white font-bold transition-transform hover:scale-105 hover:bg-blue-700"
-            onClick={() => { console.log('Botão Alterar clicado.'); }}
-          >
-            Alterar
-          </button>
+          
+          {"dataInvestimento" in selectedItem && (
+            <button
+                className="px-6 py-2 rounded-lg bg-blue-600 text-white font-bold transition-transform hover:scale-105 hover:bg-blue-700"
+                onClick={() => {
+                    setInvestimentoToUpdate(selectedItem as Investimento);
+                    setSelectedItem(null);
+                    setShowUpdateInvestimentoModal(true);
+                }}
+            >
+                Alterar
+            </button>
+          )}
         </div>
       </div>
     );
   };
   
   const renderAllEntradasList = () => {
-    // Lógica de filtro e paginação para Entradas
     const filteredEntradas = filterDateEntradas
       ? entradas.filter(e => formatDateForComparison(e.dataRecebimento) === filterDateEntradas)
       : entradas;
@@ -299,7 +306,6 @@ export default function Dashboard() {
           Todas as Entradas
         </h3>
         
-        {/* Filtro de data */}
         <div className="flex items-center gap-4 mb-5">
             <input
                 type="date"
@@ -330,7 +336,6 @@ export default function Dashboard() {
           ))}
         </ul>
         
-        {/* Paginação */}
         <div className="flex justify-center items-center gap-4 mt-5">
             <button
                 onClick={() => setCurrentPageEntradas(prev => Math.max(prev - 1, 1))}
@@ -353,7 +358,6 @@ export default function Dashboard() {
   };
   
   const renderAllDespesasList = () => {
-    // Lógica de filtro e paginação para Despesas
     const filteredDespesas = filterDateDespesas
       ? despesas.filter(d => formatDateForComparison(d.dataEntrada) === filterDateDespesas)
       : despesas;
@@ -374,7 +378,6 @@ export default function Dashboard() {
           Todas as Despesas
         </h3>
         
-        {/* Filtro de data */}
         <div className="flex items-center gap-4 mb-5">
             <input
                 type="date"
@@ -405,7 +408,6 @@ export default function Dashboard() {
           ))}
         </ul>
 
-        {/* Paginação */}
         <div className="flex justify-center items-center gap-4 mt-5">
             <button
                 onClick={() => setCurrentPageDespesas(prev => Math.max(prev - 1, 1))}
@@ -428,7 +430,6 @@ export default function Dashboard() {
   };
 
   const renderAllInvestimentosList = () => {
-    // Lógica de filtro e paginação para Investimentos
     const filteredInvestimentos = filterDateInvestimentos
       ? investimentos.filter(i => formatDateForComparison(i.dataInvestimento) === filterDateInvestimentos)
       : investimentos;
@@ -449,7 +450,6 @@ export default function Dashboard() {
           Todos os Investimentos
         </h3>
         
-        {/* Filtro de data */}
         <div className="flex items-center gap-4 mb-5">
             <input
                 type="date"
@@ -480,7 +480,6 @@ export default function Dashboard() {
           ))}
         </ul>
         
-        {/* Paginação */}
         <div className="flex justify-center items-center gap-4 mt-5">
             <button
                 onClick={() => setCurrentPageInvestimentos(prev => Math.max(prev - 1, 1))}
@@ -524,6 +523,13 @@ export default function Dashboard() {
       default:
         return null;
     }
+  };
+  
+  const handleUpdateComplete = () => {
+    setShowUpdateInvestimentoModal(false);
+    setSelectedItem(null);
+    setInvestimentoToUpdate(null);
+    fetchData(); 
   };
 
   return (
@@ -646,50 +652,66 @@ export default function Dashboard() {
 
       <Popup
         open={!!modalType}
-        closeOnDocumentClick
+        closeOnDocumentClick={false}
         onClose={handleCloseModal}
         modal
-        overlayStyle={{ background: 'transparent' }}
+        overlayStyle={{ background: 'rgba(0,0,0,0.7)' }}
       >
         {renderModal()}
       </Popup>
       
       <Popup
         open={!!selectedItem}
-        closeOnDocumentClick
+        closeOnDocumentClick={false}
         onClose={() => setSelectedItem(null)}
         modal
-        overlayStyle={{ background: 'transparent' }}
+        overlayStyle={{ background: 'rgba(0,0,0,0.7)' }}
       >
         {renderItemDetails()}
       </Popup>
 
+      {showUpdateInvestimentoModal && investimentoToUpdate && (
+        <Popup
+          open={showUpdateInvestimentoModal}
+          closeOnDocumentClick={false}
+          onClose={() => setShowUpdateInvestimentoModal(false)}
+          modal
+          overlayStyle={{ background: 'rgba(0,0,0,0.7)' }}
+        >
+          <UpdateInvestimentoModal
+            investimento={investimentoToUpdate}
+            onClose={() => setShowUpdateInvestimentoModal(false)}
+            onUpdate={handleUpdateComplete}
+          />
+        </Popup>
+      )}
+
       <Popup
         open={showAllEntradas}
-        closeOnDocumentClick
+        closeOnDocumentClick={false}
         onClose={() => setShowAllEntradas(false)}
         modal
-        overlayStyle={{ background: 'transparent' }}
+        overlayStyle={{ background: 'rgba(0,0,0,0.7)' }}
       >
         {renderAllEntradasList()}
       </Popup>
 
       <Popup
         open={showAllDespesas}
-        closeOnDocumentClick
+        closeOnDocumentClick={false}
         onClose={() => setShowAllDespesas(false)}
         modal
-        overlayStyle={{ background: 'transparent' }}
+        overlayStyle={{ background: 'rgba(0,0,0,0.7)' }}
       >
         {renderAllDespesasList()}
       </Popup>
 
       <Popup
         open={showAllInvestimentos}
-        closeOnDocumentClick
+        closeOnDocumentClick={false}
         onClose={() => setShowAllInvestimentos(false)}
         modal
-        overlayStyle={{ background: 'transparent' }}
+        overlayStyle={{ background: 'rgba(0,0,0,0.7)' }}
       >
         {renderAllInvestimentosList()}
       </Popup>
