@@ -5,6 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c112d17b-0100-42fe-85c1-c3ea35395eb4" name="Changes" comment="Criação botao add front">
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/UsuarioService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/dto/UsuarioRequestDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/dto/UsuarioResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/business/mapstruct/UsuarioMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/controller/UsuarioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/infrastructure/entity/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CRUD-Controle-Finanças/src/main/java/com/VictorDevCode/CRUD_Controle_Financas/infrastructure/repositories/UsuarioRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
